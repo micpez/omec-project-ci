@@ -84,14 +84,16 @@ node("${params.executorNode}") {
             ssh ngic-dp1 '
                 cd ${install_path}
                 rm -rf ngic-rtc
-                git clone https://github.com/omec-project/ngic-rtc.git || exit 1
+                git clone https://github.com/micpez/ngic-rtc || exit 1
                 cd ngic-rtc
 
-                if [ ${params.ghprbGhRepository} = ${ghRepository} ]; then
-                    git fetch origin pull/${params.ghprbPullId}/head:jenkins_test || exit 1
-                    git checkout jenkins_test || exit 1
-                    git log -1
-                fi
+                git checkout test_makefile || exit 1
+
+                #if [ ${params.ghprbGhRepository} = ${ghRepository} ]; then
+                #    git fetch origin pull/${params.ghprbPullId}/head:jenkins_test || exit 1
+                #    git checkout jenkins_test || exit 1
+                #    git log -1
+                #fi
 
                 cp -f ${install_path}/wo-config/dp_config.cfg ${install_path}/ngic-rtc/config/dp_config.cfg
                 cp -f ${install_path}/wo-config/interface.cfg ${install_path}/ngic-rtc/config/interface.cfg
@@ -118,14 +120,16 @@ node("${params.executorNode}") {
             ssh ngic-cp1 '
                 cd ${install_path}
                 rm -rf ngic-rtc
-                git clone https://github.com/omec-project/ngic-rtc.git || exit 1
+                git clone https://github.com/micpez/ngic-rtc || exit 1
                 cd ngic-rtc
 
-                if [ ${params.ghprbGhRepository} = ${ghRepository} ]; then
-                    git fetch origin pull/${params.ghprbPullId}/head:jenkins_test || exit 1
-                    git checkout jenkins_test || exit 1
-                    git log -1
-                fi
+                git checkout test_makefile || exit 1
+
+                #if [ ${params.ghprbGhRepository} = ${ghRepository} ]; then
+                #    git fetch origin pull/${params.ghprbPullId}/head:jenkins_test || exit 1
+                #    git checkout jenkins_test || exit 1
+                #    git log -1
+                #fi
 
                 cp -f ${install_path}/wo-config/cp_config.cfg ${install_path}/ngic-rtc/config/cp_config.cfg
                 cp -f ${install_path}/wo-config/interface.cfg ${install_path}/ngic-rtc/config/interface.cfg
